@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MemoryApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="450" Width="800" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}">
+    <Border CornerRadius="15" Background="Black" BorderBrush="#FFD36363" BorderThickness="5,0" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Grid>
+
+        </Grid>
+    </Border>
 </Window>

@@ -19,5 +19,10 @@ namespace MemoryApp
             Question = question;
             Answer = answer;
         }
+
+        public override string ToString()
+        {
+            return $"{Question} = {Answer}";
+        }
     }
 }

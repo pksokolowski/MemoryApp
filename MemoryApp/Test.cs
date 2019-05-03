@@ -54,5 +54,14 @@ namespace MemoryApp
             return ((char)(65 + index)).ToString();
         }
 
+        public override string ToString()
+        {
+            var correctAnswers = new StringBuilder();
+            foreach (QnA qna in Qnas)
+            {
+                correctAnswers.AppendLine(qna.ToString());
+            }
+            return correctAnswers.ToString();
+        }
     }
 }

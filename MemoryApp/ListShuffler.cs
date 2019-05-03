@@ -14,11 +14,11 @@ namespace MemoryApp
                 var a = Rand.Next(list.Count);
                 var b = Rand.Next(list.Count);
 
-                swap(list, a, b);
+                list.swap(a, b);
             }
         }
 
-        private static void swap<E>(List<E> list, int a, int b)
+        private static void swap<E>(this List<E> list, int a, int b)
         {
             var holder = list[a];
             list[a] = list[b];

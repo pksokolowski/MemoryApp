@@ -21,10 +21,12 @@ namespace MemoryApp
     public partial class MainWindow : Window
     {
         private readonly TestRunner Runner = new TestRunner();
+        private Quiz currentQuiz;
 
         public MainWindow()
         {
             InitializeComponent();
+            input.Visibility = Visibility.Hidden;
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -39,9 +41,14 @@ namespace MemoryApp
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            Test test = new Test(4, 2000);
+            var itemsCount = (int)itemsCountSlider.Value;
+            var itemDuration = (int)perItemTimeSlider.Value;
+
+            Test test = new Test(itemsCount, itemDuration);
+
             Runner.ItemRevealed += Runner_ItemRevealed;
             Runner.AllItemsRevealed += Runner_AllItemsRevealed;
+            currentQuiz = new Quiz(test);
 
             Runner.StartTest(test);
         }
@@ -50,7 +57,7 @@ namespace MemoryApp
         {
             output.Dispatcher.Invoke(() =>
             {
-                output.Text = "";
+                output.Text = currentQuiz.ask();
                 input.Visibility = Visibility.Visible;
                 input.Focus();
             });
@@ -61,8 +68,37 @@ namespace MemoryApp
             var runner = (TestRunner)sender;
             output.Dispatcher.Invoke(() =>
             {              
-                output.Text = $"{e.Question} = {e.Answer}";
+                output.Text = e.ToString();
             });          
+        }
+
+        private void Input_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                processInput();
+            }
+        }
+
+        private void processInput()
+        {
+            if (currentQuiz == null) return;
+
+            var answer = input.Text;
+            var isAnswerCorrect = currentQuiz.CheckAnswer(answer);
+            output.Text = currentQuiz.ask();
+            checkResultsIfAvailable();
+            input.Text = "";
+        }
+
+        private void checkResultsIfAvailable()
+        {
+            var results = currentQuiz.computeResult();
+            if (results == null) return;
+
+            output.Text = results.ToString();
+            currentQuiz = null;
+            input.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -58,6 +58,8 @@
     <Compile Include="ListShuffler.cs" />
     <Compile Include="QnA.cs" />
     <Compile Include="QnAPairGenerator.cs" />
+    <Compile Include="Quiz.cs" />
+    <Compile Include="Result.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="TestRunner.cs" />
     <Page Include="MainWindow.xaml">

@@ -20,6 +20,8 @@ namespace MemoryApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly TestRunner Runner = new TestRunner();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -28,6 +30,39 @@ namespace MemoryApp
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            Test test = new Test(4, 2000);
+            Runner.ItemRevealed += Runner_ItemRevealed;
+            Runner.AllItemsRevealed += Runner_AllItemsRevealed;
+
+            Runner.StartTest(test);
+        }
+
+        private void Runner_AllItemsRevealed()
+        {
+            output.Dispatcher.Invoke(() =>
+            {
+                output.Text = "";
+                input.Visibility = Visibility.Visible;
+                input.Focus();
+            });
+        }
+
+        private void Runner_ItemRevealed(object sender, QnA e)
+        {
+            var runner = (TestRunner)sender;
+            output.Dispatcher.Invoke(() =>
+            {              
+                output.Text = $"{e.Question} = {e.Answer}";
+            });          
         }
     }
 }

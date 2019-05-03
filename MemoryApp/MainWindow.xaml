@@ -8,6 +8,11 @@
         Title="MainWindow" Height="450" Width="800" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}">
     <Border CornerRadius="15" Background="Black" BorderBrush="#FFD36363" BorderThickness="5,0" MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>
+            <Slider Margin="611,406,10,10" Minimum="3" Maximum="15" SmallChange="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True" ToolTip="Choose number of items to remember" AutoToolTipPlacement="TopLeft"/>
+            <Button Content="exit" Margin="692,10,10,420" Click="Button_Click"/>
+            <TextBox x:Name="output" HorizontalAlignment="Left" Margin="223,81,0,0" TextWrapping="Wrap" Width="167" Height="24" VerticalAlignment="Top" Background="#FF212121" BorderBrush="#FF3E3E3E" SelectionBrush="{x:Null}" IsReadOnly="True" TextAlignment="Center" MaxLines="1" Foreground="White" FontSize="14"/>
+            <Button x:Name="startButton" Content="Start" Margin="0,0,23,82" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Click="StartButton_Click"/>
+            <TextBox x:Name="input" HorizontalAlignment="Left" Margin="395,81,0,0" TextWrapping="Wrap" Width="47" Background="#FF212121" BorderBrush="#FF3E3E3E" SelectionBrush="{x:Null}" TextAlignment="Center" MaxLines="1" Foreground="White" FontSize="14" Height="24" VerticalAlignment="Top" Visibility="Collapsed"/>
 
         </Grid>
     </Border>

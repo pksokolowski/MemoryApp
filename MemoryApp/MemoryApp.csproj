@@ -55,6 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ListShuffler.cs" />
+    <Compile Include="QnA.cs" />
+    <Compile Include="QnAPairGenerator.cs" />
+    <Compile Include="Test.cs" />
+    <Compile Include="TestRunner.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

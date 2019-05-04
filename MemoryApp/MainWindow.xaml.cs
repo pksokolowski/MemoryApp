@@ -27,6 +27,8 @@ namespace MemoryApp
         {
             InitializeComponent();
             input.Visibility = Visibility.Hidden;
+            Runner.ItemRevealed += Runner_ItemRevealed;
+            Runner.AllItemsRevealed += Runner_AllItemsRevealed;
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -44,12 +46,9 @@ namespace MemoryApp
             var itemsCount = (int)itemsCountSlider.Value;
             var itemDuration = (int)perItemTimeSlider.Value;
 
-            Test test = new Test(itemsCount, itemDuration);
-
-            Runner.ItemRevealed += Runner_ItemRevealed;
-            Runner.AllItemsRevealed += Runner_AllItemsRevealed;
+            Test test = new Test(itemsCount, itemDuration);   
+            
             currentQuiz = new Quiz(test);
-
             Runner.StartTest(test);
         }
 

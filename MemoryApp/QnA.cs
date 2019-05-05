@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MemoryApp
+﻿namespace MemoryApp
 {
     /// <summary>
     /// Holds a question-answer pair.
@@ -26,3 +20,4 @@ namespace MemoryApp
         }
     }
 }
+ 
